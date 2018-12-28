@@ -1,12 +1,15 @@
 import React, { Component } from "react";
+import Row from 'react-bootstrap/lib/Row';
+import { Button } from 'react-bootstrap';
+
 export default class ClockBtn extends Component {
     render() {
         return (
-            <div class="row">
-                <button class="btn" id="start-btn">Start</button>
-                <button class="btn" id="stop-btn">Stop</button>
-                <button class="btn" id="reset-btn">Reset</button>
-            </div>
+            <Row>
+                <Button type="button" variant="primary" id="start-btn">Start</Button>
+                <Button type="button" variant="secondary" id="stop-btn">Stop</Button>
+                <Button type="button" variant="primary" id="reset-btn">Reset</Button>
+            </Row>
         );
     }
 }

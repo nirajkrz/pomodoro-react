@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import './Clock.css';
+import Row from "react-bootstrap/lib/Row";
+import "./Clock.css";
 class Clock extends Component {
   render() {
     return (
-        <div className="row">
-        <div className="col-xs-1 col-sm-4 col-lg-5" ></div>
+      <Row>
+        <div className="col-xs-1 col-sm-4 col-lg-5" />
         <div className="col-xs-10 col-sm-4 col-lg-2" id="session-settings">
           <div className="row noselect">
             <div className="col-xs-6">
@@ -54,8 +55,8 @@ class Clock extends Component {
             </div>
           </div>
         </div>
-        <div className="col-xs-1 col-sm-4 col-lg-5"></div>
-      </div>
+        <div className="col-xs-1 col-sm-4 col-lg-5" />
+      </Row>
     );
   }
 }
