@@ -1,61 +1,40 @@
 import React, { Component } from "react";
 import Row from "react-bootstrap/lib/Row";
 import "./Clock.css";
+import ProgressBarCircle from "../ProgressBar/ProgressBar";
+import ClockBtn from "./ClockBtn";
+import TimerConfig from "../TimerConfig/TimerConfig";
+
 class Clock extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      seconds: "00", // responsible for the seconds
+      minutes: "" // responsible for the minutes
+    };
+  }
+
+  startTimer() {
+    this.setState({
+      timerState: 1,
+      timer: setInterval(this.reduceTimer, 1000)
+    });
+  }
+
+  formatNumber(number) {
+    return number < 10 ? "0" + number : number;
+  }
+
   render() {
     return (
       <Row>
-        <div className="col-xs-1 col-sm-4 col-lg-5" />
-        <div className="col-xs-10 col-sm-4 col-lg-2" id="session-settings">
-          <div className="row noselect">
-            <div className="col-xs-6">
-              <div className="row">Length</div>
-              <div className="row">
-                <div className="col-xs-4">
-                  <span
-                    className="glyphicon glyphicon-triangle-left"
-                    id="length-minus"
-                  />
-                </div>
-
-                <div className="col-xs-4" id="length">
-                  {" "}
-                  25{" "}
-                </div>
-
-                <div className="col-xs-4">
-                  <span
-                    className="glyphicon glyphicon-triangle-right"
-                    id="length-plus"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="col-xs-6">
-              <div className="row">Break</div>
-              <div className="row">
-                <div className="col-xs-4">
-                  <span
-                    className="glyphicon glyphicon-triangle-left"
-                    id="break-minus"
-                  />
-                </div>
-                <div className="col-xs-4" id="break">
-                  {" "}
-                  5{" "}
-                </div>
-                <div className="col-xs-4">
-                  <span
-                    className="glyphicon glyphicon-triangle-right"
-                    id="break-plus"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-xs-1 col-sm-4 col-lg-5" />
+        <TimerConfig/>
+        <ProgressBarCircle />
+          <ClockBtn
+            startTimer={this.startTimer}
+            stopTimer={this.stopTimer}
+            resetTimer={this.resetTimer}
+          />
       </Row>
     );
   }
